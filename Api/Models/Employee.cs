@@ -17,10 +17,11 @@ namespace Api.Models
         public string? LastName { get; set; }
 
         [Required]
-        public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
 
-        [Required]
+        public string? Address { get; set; }
+
+        public string? PhoneNumber { get; set; }
         public string? Department { get; set; }
     }
 }

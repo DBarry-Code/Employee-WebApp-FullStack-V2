@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Data;
+using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,18 +13,18 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
     {
-        /*
-        private readonly DbContext _context;
+        private readonly DataContext _context;
 
-        public EmployeesController(DbContext context)
+        public EmployeesController(DataContext context)
         {
             _context = context;
         }
-*/
+
         [HttpGet]
-        public string SayHI()
+        public async Task<IEnumerable<Employee>> GetEmployees()
         {
-            return "HI";
+            var employees = await _context.Employees.AsNoTracking().ToArrayAsync();
+            return employees;
         }
     }
 }
